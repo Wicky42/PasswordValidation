@@ -79,8 +79,16 @@ class PasswordValidatorTest {
         assertEquals(contains, PasswordValidator.containsUpper(text));
     }
 
-    @Test
-    void containsUpperAndLower() {
+    @ParameterizedTest
+    @CsvSource({
+            "hOMPL90, false",
+            "TbmnIv, true",
+            "sbinfm, false",
+            "ZbnUo, true"
+    })
+    void containsUpperAndLower_shouldReturnCorrectly(String text, boolean contains) {
+        assertEquals(contains, PasswordValidator.containsUpperAndLower(text));
+
     }
 
 
