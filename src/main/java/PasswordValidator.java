@@ -1,7 +1,7 @@
 public final class PasswordValidator {
 
     public static String[] getCommonPasswords(){
-        return new String[]{"PassWort", "meinPasswort", "Passwort123", "PassWord", "1234PassWort"};
+        return new String[]{"PassWort1", "meinPasswort", "Passwort123", "PassWord1", "1234PassWort"};
     }
 
     public static String getSpecialCharacter(){
@@ -48,7 +48,7 @@ public final class PasswordValidator {
     // Optionale Gesamtsicht:
     public static boolean isValid(String password) // nutzt die obenstehenden Checks
     {
-        return false;
+        return containsUpperAndLower(password) && containsDigit(password) && containsSpecialChar(password) && hasMinLength(password, 8) ;
     }
 
     public static boolean isDigit(char c){

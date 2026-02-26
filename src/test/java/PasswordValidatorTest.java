@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -120,7 +119,7 @@ class PasswordValidatorTest {
             "#HencJ09MknÄ. , true",
             "raUs7, false",
             "meinPasswort, false",
-            "$ehRGüTEssPassWort? , true"
+            "$ehRGüTEss4PassWort? , true"
     })
     void isValid_shouldReturnTrue(String text, boolean valid){
         assertEquals(valid, PasswordValidator.isValid(text));
