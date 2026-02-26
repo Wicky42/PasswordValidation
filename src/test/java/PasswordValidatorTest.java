@@ -103,8 +103,13 @@ class PasswordValidatorTest {
 
     }
 
-    @Test
-    void containsSpecialChar() {
+    @ParameterizedTest
+        @CsvSource({
+                "tvjlk+?#, true",
+                "fvUom9, false"
+        })
+    void containsSpecialChar_shouldReturnCorrect(String text, boolean isSpecial) {
+        assertEquals(isSpecial, PasswordValidator.containsSpecialChar(text));
     }
 
     @Test

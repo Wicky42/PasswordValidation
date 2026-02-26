@@ -4,6 +4,10 @@ public final class PasswordValidator {
         return new String[]{"PassWort", "meinPasswort", "Passwort123", "PassWord", "1234PassWort"};
     }
 
+    public static String getSpecialCharacter(){
+        return "!@#$%^&*()-_=+[]{};:,.?/";
+    }
+
     public static boolean hasMinLength(String password, int min) {
         return password.length() >= min;
     }
@@ -32,7 +36,12 @@ public final class PasswordValidator {
     }
 
     // Bonus:
-    public static boolean containsSpecialChar(String password, String allowed) {
+    public static boolean containsSpecialChar(String password) {
+        for(char c : password.toCharArray()){
+            if(getSpecialCharacter().contains(String.valueOf(c))){
+                return true;
+            }
+        }
         return false;
     }
 
