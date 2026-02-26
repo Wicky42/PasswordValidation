@@ -5,6 +5,11 @@ public final class PasswordValidator {
     }
 
     public static boolean containsDigit(String password) {
+        for(char c : password.toCharArray()){
+            if(isDigit(c)){
+                return true;
+            }
+        }
         return false;
     }
 
@@ -26,6 +31,10 @@ public final class PasswordValidator {
     public static boolean isValid(String password) // nutzt die obenstehenden Checks
     {
         return false;
+    }
+
+    public static boolean isDigit(char c){
+        return ("1234567890").contains(String.valueOf(c));
     }
 
 }
