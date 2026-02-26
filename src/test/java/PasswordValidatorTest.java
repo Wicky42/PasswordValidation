@@ -28,13 +28,34 @@ class PasswordValidatorTest {
 
     @ParameterizedTest
     @CsvSource({
-            "tz678d, true",
-            "5ton, true",
-            "okn7bnb109, true",
-            "18293, true"
+            "tz678d",
+            "5ton",
+            "okn7bnb109",
+            "18293"
     })
     void containsDigit_shouldReturnTrue_whenStringContainsDigit(String text) {
         assertTrue(PasswordValidator.containsDigit(text));
+
+    }
+    @ParameterizedTest
+    @CsvSource({
+            "bfnlv",
+            "neoplÜlA",
+            "Rtwndol"
+    })
+    void containsDigit_shouldReturnFalse_whenStringDoNotContainsDigit(String text) {
+        assertFalse(PasswordValidator.containsDigit(text));
+    }
+    @ParameterizedTest
+    @CsvSource({
+            "bfnlv, false",
+            "neoplÜlA, false",
+            "ionknO9, true",
+            "Rtwndol, false",
+            "2Zb7mML, true"
+    })
+    void containsDigit_shouldReturnFCorrectly(String text, boolean contains) {
+        assertEquals(contains, PasswordValidator.containsDigit(text));
     }
 
     @Test
