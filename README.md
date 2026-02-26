@@ -11,22 +11,20 @@ Ein gültiges Passwort muss:
 - mindestens **einen Kleinbuchstaben** (a–z) enthalten  
 - mindestens **eine Ziffer** (0–9) enthalten  
 - **kein häufig verwendetes oder unsicheres Passwort** sein (z. B. password, 12345678, qwerty)
-
-Optional für erhöhte Sicherheit:
-
-- mindestens **ein Sonderzeichen** enthalten (z. B. `! @ # $ % ^ & *`)
+- mindestens **ein Sonderzeichen** enthalten (z. B. `!@#$%^&*()-_=+[]{};:,.?/`)
 
 ---
 
 ## Beispiele
 
 ### ✅ Gültiges Passwort
-MeinZahlenschloss1
+MeinZahlenschloss1#
 
 Erfüllt alle Anforderungen:
 - mindestens 8 Zeichen  
 - Groß- und Kleinbuchstaben  
-- enthält eine Zahl  
+- enthält eine Zahl
+- enthält ein Sonderzeichen
 
 ### ❌ Ungültige Passwörter
 passwort, Meinpasswort
