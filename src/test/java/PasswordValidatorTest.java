@@ -61,10 +61,22 @@ class PasswordValidatorTest {
     @ParameterizedTest
     @CsvSource({
             "TZBOI90, false",
-            "zbUNLKm, true"
+            "zbUNLKm, true",
+            "9, false"
     })
     void containsLower_shouldReturnCorrect(String text, boolean contains){
         assertEquals(contains, PasswordValidator.containsLower(text));
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "TZBOI90, true",
+            "zbUNLKm, true",
+            "9, false",
+            "hbjfik, false"
+    })
+    void containsUpper_shouldReturnCorrect(String text, boolean contains){
+        assertEquals(contains, PasswordValidator.containsUpper(text));
     }
 
     @Test

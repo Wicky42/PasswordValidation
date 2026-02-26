@@ -47,4 +47,13 @@ public final class PasswordValidator {
         }
         return false;
     }
+
+    public static boolean containsUpper(String text) {
+        for (char c : text.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
