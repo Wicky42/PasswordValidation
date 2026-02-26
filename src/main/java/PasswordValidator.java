@@ -13,6 +13,8 @@ public final class PasswordValidator {
         return false;
     }
 
+
+
     public static boolean containsUpperAndLower(String password) {
         return false;
     }
@@ -37,4 +39,12 @@ public final class PasswordValidator {
         return ("1234567890").contains(String.valueOf(c));
     }
 
+    public static boolean containsLower(String text) {
+        for (char c : text.toCharArray()) {
+            if (Character.isLowerCase(c)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
