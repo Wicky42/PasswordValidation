@@ -112,7 +112,18 @@ class PasswordValidatorTest {
         assertEquals(isSpecial, PasswordValidator.containsSpecialChar(text));
     }
 
-    @Test
-    void isValid() {
+    @ParameterizedTest
+    @CsvSource({
+            "26BnhJlk01ß#, true",
+            "Passwort123, false",
+            "palenpalom234, false",
+            "#HencJ09MknÄ. , true",
+            "raUs7, false",
+            "meinPasswort, false",
+            "$ehRGüTEssPassWort? , true"
+    })
+    void isValid_shouldReturnTrue(String text, boolean valid){
+        assertEquals(valid, PasswordValidator.isValid(text));
     }
+
 }
