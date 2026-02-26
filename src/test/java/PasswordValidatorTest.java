@@ -92,7 +92,7 @@ class PasswordValidatorTest {
 
     @ParameterizedTest
     @CsvSource({
-        "PassWort, true",
+        "PassWort1, true",
         "ghbUlm; , false",
         "1234PassWort, true",
         "tz8z6Nb, false"
