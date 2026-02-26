@@ -1,5 +1,9 @@
 public final class PasswordValidator {
 
+    public static String[] getCommonPasswords(){
+        return new String[]{"PassWort", "meinPasswort", "Passwort123", "PassWord", "1234PassWort"};
+    }
+
     public static boolean hasMinLength(String password, int min) {
         return password.length() >= min;
     }
