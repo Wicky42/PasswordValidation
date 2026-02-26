@@ -58,9 +58,20 @@ class PasswordValidatorTest {
         assertEquals(contains, PasswordValidator.containsDigit(text));
     }
 
+    @ParameterizedTest
+    @CsvSource({
+            "TZBOI90, false",
+            "zbUNLKm, true"
+    })
+    void containsLower_shouldReturnCorrect(String text, boolean contains){
+        assertEquals(contains, PasswordValidator.containsLower(text));
+    }
+
     @Test
     void containsUpperAndLower() {
     }
+
+
 
     @Test
     void isCommonPassword() {
