@@ -13,10 +13,8 @@ public final class PasswordValidator {
         return false;
     }
 
-
-
     public static boolean containsUpperAndLower(String password) {
-        return false;
+        return containsLower(password) && containsUpper(password);
     }
 
     public static boolean isCommonPassword(String password) // kleine interne Liste
