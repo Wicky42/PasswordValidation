@@ -1,9 +1,26 @@
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class PasswordValidatorTest {
+
+    @Test
+    void shouldThrowException_whenCalledWithEmptyString(){
+        assertThrows(IllegalArgumentException.class, ()-> PasswordValidator.hasMinLength("", 8));
+        assertThrows(IllegalArgumentException.class, ()-> PasswordValidator.containsSpecialChar(""));
+        assertThrows(IllegalArgumentException.class, ()-> PasswordValidator.containsDigit(""));
+        assertThrows(IllegalArgumentException.class, ()-> PasswordValidator.containsUpperAndLower(""));
+    }
+
+    @Test
+    void shouldThrowException_whenCalledWithENull(){
+        assertThrows(IllegalArgumentException.class, ()-> PasswordValidator.hasMinLength(null, 8));
+        assertThrows(IllegalArgumentException.class, ()-> PasswordValidator.containsSpecialChar(null));
+        assertThrows(IllegalArgumentException.class, ()-> PasswordValidator.containsDigit(null));
+        assertThrows(IllegalArgumentException.class, ()-> PasswordValidator.containsUpperAndLower(null));
+    }
 
     @ParameterizedTest
     @CsvSource({
