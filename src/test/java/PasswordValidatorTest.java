@@ -91,10 +91,16 @@ class PasswordValidatorTest {
 
     }
 
+    @ParameterizedTest
+    @CsvSource({
+        "Password, true",
+        "ghbUlm; , false",
+        "123Passwort, true",
+        "tz8z6Nb, false"
+    })
+    void isCommonPassword_shouldReturnCorrectly(String text, boolean isCommon) {
+        assertEquals(isCommon, PasswordValidator.isCommonPassword(text));
 
-
-    @Test
-    void isCommonPassword() {
     }
 
     @Test
