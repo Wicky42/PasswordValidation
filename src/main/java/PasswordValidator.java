@@ -23,6 +23,11 @@ public final class PasswordValidator {
 
     public static boolean isCommonPassword(String password) // kleine interne Liste
     {
+        for(String commonPassword : getCommonPasswords()){
+            if(password.equals(commonPassword)){
+                return true;
+            }
+        }
         return false;
     }
 
