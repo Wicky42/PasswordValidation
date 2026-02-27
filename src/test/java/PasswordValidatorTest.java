@@ -32,14 +32,19 @@ class PasswordValidatorTest {
         assertTrue(PasswordValidator.hasMinLength(text, min));
     }
 
-    @ParameterizedTest
-    @CsvSource({
-            "ghb0, 8",
-            "hb21, 8",
-            "0pw, 4"
-    })
-    void hasMinLength_shouldReturnFalse_whenStringDoesntHaveMinLength(String text, int min) {
-        assertFalse(PasswordValidator.hasMinLength(text, min));
+//    @ParameterizedTest
+//    @CsvSource({
+//            "ghb0, 8",
+//            "hb21, 8",
+//            "0pw, 4"
+//    })
+//    void hasMinLength_shouldReturnFalse_whenStringDoesntHaveMinLength(String text, int min) {
+//        assertFalse(PasswordValidator.hasMinLength(text, min));
+//    }
+    @Test
+    void hasMinLength_shouldThrowIAE_whenCalledWithStringLengthLessThenMin(){
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, ()->PasswordValidator.hasMinLength("Lk8", 8));
+        assertEquals("Das Passwort muss mindestens 8 Zeichen lang sein", exception.getMessage());
     }
 
     @ParameterizedTest

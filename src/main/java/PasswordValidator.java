@@ -16,7 +16,10 @@ public final class PasswordValidator {
 
     public static boolean hasMinLength(String password, int min) {
         requireNotNullNorEmpty(password);
-        return password.length() >= min;
+        if(password.length() < min){
+            throw new IllegalArgumentException("Das Passwort muss mindestens 8 Zeichen lang sein");
+        }
+        return true;
     }
 
     public static boolean containsDigit(String password) {
