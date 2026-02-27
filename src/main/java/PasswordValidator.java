@@ -67,6 +67,7 @@ public final class PasswordValidator {
         return containsUpperAndLower(password) && containsDigit(password) && containsSpecialChar(password) && hasMinLength(password, 8) ;
     }
 
+
     public static boolean isDigit(char c){
         return ("1234567890").contains(String.valueOf(c));
     }
@@ -87,5 +88,23 @@ public final class PasswordValidator {
             }
         }
         return false;
+    }
+
+    public static void validateOrThrow(String password) {
+        if(!hasMinLength(password, 8)){
+            throw new IllegalArgumentException("Password muss min. 8 Zeichen haben");
+        }
+        else if(!containsLower(password)){
+            throw new IllegalArgumentException("Passwort muss min einen Kleinbuchstaben haben");
+        }
+        else if(!containsUpper(password)){
+            throw new IllegalArgumentException("Passwort muss min einen Großbuchstaben haben");
+        }
+        else if(!containsSpecialChar(password)){
+            throw new IllegalArgumentException("Passwort muss min ein Sonderzeichen haben");
+        }
+        else if(isCommonPassword(password)){
+            throw new IllegalArgumentException("Passwort ist zu unsicher");
+        }
     }
 }

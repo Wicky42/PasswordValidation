@@ -42,6 +42,7 @@ class PasswordValidatorTest {
         assertFalse(PasswordValidator.hasMinLength(text, min));
     }
 
+
     @ParameterizedTest
     @CsvSource({
             "tz678d",
@@ -140,6 +141,44 @@ class PasswordValidatorTest {
     })
     void isValid_shouldReturnTrue(String text, boolean valid){
         assertEquals(valid, PasswordValidator.isValid(text));
+    }
+
+
+    @Test
+    void validateOrThrow_shouldThrowException_whenCalledWithLessCharsThenMin(){
+        //GIVEN
+        String password = "8Hnb?";
+        int minLength = 8;
+        //WHEN
+        IllegalArgumentException exception =
+                assertThrows(IllegalArgumentException.class, ()->PasswordValidator.validateOrThrow(password));
+        //THEN
+        assertEquals("Password muss min. 8 Zeichen haben", exception.getMessage());
+    }
+    @Test
+    void validateOrThrow_shouldThrowException_whenCalledWithNonLower(){
+        //GIVEN
+        String password = "57UJN#PO0";
+        //WHEN
+        IllegalArgumentException exception =
+                assertThrows(IllegalArgumentException.class, ()->PasswordValidator.validateOrThrow(password));
+        //THEN
+        assertEquals("Passwort muss min einen Kleinbuchstaben haben", exception.getMessage());
+    }
+
+    void validateOrThrow_shouldThrowException_whenCalledWithNonUpper(){
+        //GIVEN
+        String password = "bn92#?avt";
+        //WHEN
+        IllegalArgumentException exception =
+                assertThrows(IllegalArgumentException.class, ()->PasswordValidator.validateOrThrow(password));
+        //THEN
+        assertEquals("Passwort muss min einen Großbuchstaben haben", exception.getMessage());
+    }
+
+    @Test
+    void validateOrThrow_shouldNotThrow_whenGivenValidPassword(){
+        assertDoesNotThrow(()->PasswordValidator.validateOrThrow("P0bn67#Hg"));
     }
 
 }

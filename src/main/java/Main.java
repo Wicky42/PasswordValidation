@@ -4,29 +4,43 @@ public class Main {
 
     static void main(String[] args){
 
+        final String SUCCSESS_MESSAGE = "Danke, ihr Passwort wurde gespeichert.";
+        final String EXIT_Message = "Es wurde kein Passwort gespeichert.";
+
         Scanner scanner = new Scanner(System.in);
         String password;
 
-        System.out.println("Hello, please set a password.");
+        System.out.println("Hallo, bitte wählen Sie Ihr Passwort.");
+        getText();
         do{
-            getText();
             password = scanner.nextLine();
+            if(password.equals("q")){
+                break;
+            }
+            try{
+                PasswordValidator.validateOrThrow(password);
+            }
+            catch (IllegalArgumentException e){
+                System.out.println(e.getMessage());
+                System.out.println("q für Beenden");
+            }
         }while(!PasswordValidator.isValid(password));
 
-        System.out.println("Thank, password is set");
-        System.out.println("Your password is: " + password);
+        String message = PasswordValidator.isValid(password) ? SUCCSESS_MESSAGE : EXIT_Message;
+        System.out.println(message);
     }
 
     public static void getText(){
         System.out.println("""
-        Password requirements:
-        - At least 8 characters long
-        - At least one uppercase letter
-        - At least one lowercase letter
-        - At least one digit
-        - At least one special character
-        >""");    }
-
-
+        Anforderungen:
+        - Mindestens 8 Zeichen
+        - Mindestens einen Großbuchstaben
+        - Mindestens einen Kleinbuchstaben
+        - Mindestens eine Ziffer
+        - Mindestens ein Sonderzeichen
+        
+        - q für Beenden
+        >""");
+    }
 
 }
