@@ -176,4 +176,9 @@ class PasswordValidatorTest {
         assertEquals("Passwort muss min einen Großbuchstaben haben", exception.getMessage());
     }
 
+    @Test
+    void validateOrThrow_shouldNotThrow_whenGivenValidPassword(){
+        assertDoesNotThrow(()->PasswordValidator.validateOrThrow("P0bn67#Hg"));
+    }
+
 }
