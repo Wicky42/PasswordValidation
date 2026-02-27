@@ -10,7 +10,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         String password;
 
-        System.out.println("Hello, please set a password.");
+        System.out.println("Hallo, bitte wählen Sie Ihr Passwort.");
         getText();
         do{
             password = scanner.nextLine();
@@ -22,7 +22,7 @@ public class Main {
             }
             catch (IllegalArgumentException e){
                 System.out.println(e.getMessage());
-                System.out.println("q for exit");
+                System.out.println("q für Beenden");
             }
         }while(!PasswordValidator.isValid(password));
 
@@ -32,14 +32,14 @@ public class Main {
 
     public static void getText(){
         System.out.println("""
-        Password requirements:
-        - At least 8 characters long
-        - At least one uppercase letter
-        - At least one lowercase letter
-        - At least one digit
-        - At least one special character
+        Anforderungen:
+        - Mindestens 8 Zeichen
+        - Mindestens einen Großbuchstaben
+        - Mindestens einen Kleinbuchstaben
+        - Mindestens eine Ziffer
+        - Mindestens ein Sonderzeichen
         
-        - q for exit
+        - q für Beenden
         >""");
     }
 
